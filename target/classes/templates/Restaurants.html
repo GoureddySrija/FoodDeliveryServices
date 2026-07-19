@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurants</title>
+<script>
+function getRestaurantById() {
+    //Get the customer ID from the input field
+    var restaurantId = prompt("Please enter the Restaurant ID:");
+ 
+        // If user provides a customer ID
+        if (restaurantId !== null && restaurantId.trim() !== "") {
+            // Redirect to the URL with the provided customer ID
+            window.location.href = `/fooddeliveryapp/api/${restaurantId}`;
+        }
+  }
+  
+ function getAllRatingsByRestaurantId(){
+ var restaurant_Id = prompt("please enter the Restaurant ID:");
+      if(restaurant_Id !== null && restaurant_Id.trim() !==""){
+      window.location.href = `/fooddeliveryapp/api/${restaurant_Id}/ratings`;
+      }
+ }
+ 
+ function updateRestaurants(){
+ var restaurantID = prompt("please enter the Restaurant ID:");
+    if(restaurantID !== null && restaurantID.trim() !==""){
+    window.location.href = `/fooddeliveryapp/api/update/${restaurantID}`
+    }
+    }
+</script>
+<style>
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			margin: 0;
+			padding: 0;
+			background: url('https://th.bing.com/th?id=OIP.MlZXr9dd8Om34xx-wydaQQHaE9&w=305&h=204&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2')no-repeat center center fixed;
+			background-size:cover;
+			background-blend-mode: overlay;
+		}
+		.header {
+			background: linear-gradient(to right,#bdc3c7,#2F4F4F);
+			color: white;
+			text-align: center;
+			padding: 20px 0;
+		}
+		.container {
+			max-width: 800px;
+			margin: 20px auto;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 20px;
+			padding: 20px;
+		}
+		.card {
+			background-color: rgba(255, 255, 255, 0.9);
+			border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+			overflow: hidden;
+			transition: transform 0.3s ease;
+		}
+		.card:hover {
+			transform: translateY(-5px);
+		}
+		.card-content {
+			padding: 20px;
+			text-align: center;
+		}
+		h2 {
+			color: #333;
+			font-size: 20px;
+			margin-bottom: 10px;
+		}
+		p {
+			color: #666;
+			font-size: 16px;
+			margin-bottom: 20px;
+		}
+		.btn {
+			padding: 10px 20px;
+			font-size: 16px;
+			cursor: pointer;
+			border: none;
+			border-radius: 5px;
+			background: linear-gradient(to right,#bdc3c7,#2F4F4F);
+			color: white;
+			text-transform: uppercase;
+			transition: background-color 0.3s ease;
+		}
+		.btn:hover {
+			background: linear-gradient(to right, #9a9a9a, #4fa3f0);
+		}
+		a {
+			text-decoration: none;
+			color: white;
+		}
+		h1 {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		}
+</style>
+
+</head>
+<body>
+<div class="header">
+<h1>Restaurants</h1>
+</div>
+<div class="container">
+<div class="card">
+<div class="card-content">
+<h2>All Restaurant Details</h2>
+<button class="btn"> <a href="/fooddeliveryapp/api/restaurants">GET</a></button>
+<p>Retrieve all Restaurant details.</p>
+</div>
+</div>
+<div class="card">     
+<div class="card-content">
+<h2>Add Restaurants</h2>
+<button class="btn"><a href="/fooddeliveryapp/api/add-restaurant">POST</a></button>
+<p>Add new Restaurant record into DataBase</p>
+</div>
+</div>
+<div class="card">
+<div class="card-content">
+<h2>Restaurant details By RestaurantId</h2>
+<button class="btn" onclick="getRestaurantById()">GET</a></button>
+<p>Retrieve Restaurant details by RestaurantId </p>
+</div>
+</div>
+<div class="card">
+<div class="card-content">
+<h2>Update a Restaurant</h2>
+<button class="btn" onclick="updateRestaurants()">PUT</a></button>
+<p>Update Restaurant Record</p>
+</div>
+</div>
+<div class="card">
+<div class="card-content">
+<h2>All Ratings Details</h2>
+<button class="btn" onclick="getAllRatingsByRestaurantId()">GET</a></button>
+<p>Retrieve all Ratings by RestaurantId</p>
+</div>
+</div>
+ 
+</body>
+</html>

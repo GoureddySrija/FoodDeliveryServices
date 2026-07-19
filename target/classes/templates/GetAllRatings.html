@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #008080;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #008080;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-b5color: #ddd;
+        }
+</style>
+</head>
+<body>
+    <h1>Ratings</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Rating ID</th>
+                <th>Rating</th>
+                <th>Review</th>
+                <th>Order ID</th>
+                <th>Order Date</th>
+                <th>Customer Name</th>
+                <th>Restaurant Name</th>
+                <th>Delivery Driver</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Iterate over each rating -->
+            <tr th:each="rating : ${ratings}">
+                <td th:text="${rating.rating_id}">Rating ID</td>
+                <td th:text="${rating.rating}">Rating</td>
+                <td th:text="${rating.review}">Review</td>
+                <td th:text="${rating.order.order_id}">Order ID</td>
+                <td th:text="${rating.order.order_date}">Order Date</td>
+                <td th:text="${rating.order.customers.customer_name}">Customer Name</td>
+                <td th:text="${rating.restaurants.restaurant_name}">Restaurant Name</td>
+                <td th:text="${rating.order.deliveryDrivers.driver_name}">Delivery Driver</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

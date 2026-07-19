@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurants</title>
+<script>
+    function getCustomerById() {
+    // Get the customer ID from the input field
+    var customerId = prompt("Please enter the Customer ID:");
+ 
+        // If user provides a customer ID
+        if (customerId !== null && customerId.trim() !== "") {
+            // Redirect to the URL with the provided customer ID
+            window.location.href = `/fooddeliveryapp/customers/${customerId}`;
+        }
+}
+ 
+function getOrdersByCustomerId() {
+        // Prompt the user to input the customer ID
+       var customerId = prompt("Please enter the Customer ID:");
+ 
+        // If user provides a customer ID
+        if (customerId !== null && customerId.trim() !== "") {
+            // Redirect to the URL with the provided customer ID
+            window.location.href = `/fooddeliveryapp/customers/${customerId}/orders`;
+        }
+    }
+    function updateCustomerById() {
+        // Prompt the user to input the customer ID
+        var customerId = prompt("Please enter the Customer ID:");
+        // If user provides a customer ID
+        if (customerId !== null && customerId.trim() !== "") {
+            // Redirect to the URL with the provided customer ID for updating
+            window.location.href = `/fooddeliveryapp/customers/update/${customerId}`;
+        }
+    }
+ 
+</script>
+ 
+ 
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: url('https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1g4P0u.img')
+        no-repeat center center fixed;
+        background-size: cover;
+        background-blend-mode: overlay;
+    }
+    .header {
+        background: linear-gradient(to right,#bdc3c7,#2F4F4F);
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+    }
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+    .card {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .card-content {
+        padding: 20px;
+        text-align: center;
+    }
+    h2 {
+        color: #333;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    p {
+        color: #666;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background: linear-gradient(to right,#bdc3c7,#2F4F4F);
+        color: white;
+        text-transform: uppercase;
+        transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+        background: linear-gradient(to right, #9a9a9a, #4fa3f0);
+    }
+    a {
+        text-decoration: none;
+        color: white;
+    }
+    h1 {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+</style>
+</head>
+<body>
+<div class="header">
+<h1>Customers</h1>
+</div>
+<div class="container">
+<div class="card">
+<div class="card-content">
+<h2>Get All Customers</h2>
+<button class="btn"> <a href="/fooddeliveryapp/customers/html">GET</a></button>
+<p>Retrieve all customers details from the suppliers table.</p>
+</div>
+</div>
+<div class="card">
+<div class="card-content">
+<h2>Get Customer By ID</h2>
+<button class="btn" onclick="getCustomerById()">GET</button>
+<p>Retrieve customer details by ID.</p>
+</div>
+ 
+</div>
+<div class="card">
+<div class="card-content">
+<h2>Update Customer By ID</h2>
+<button class="btn" onclick="updateCustomerById()">PUT</button>
+<p>Update customer details by ID.</p>
+</div>
+</div>
+ 
+<div class="card">
+<div class="card-content">
+<h2>Get Orders By Customer ID</h2>
+<button class="btn" onclick="getOrdersByCustomerId()">GET</button>
+<p>Retrieve orders for a customer by ID.</p>
+</div>
+</div>
+</div>
+</body>
+</html>

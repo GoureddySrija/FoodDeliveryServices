@@ -1,0 +1,54 @@
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Order Details</title>
+<link rel="stylesheet" type="text/css" href="/styles.css">
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+h1 {
+    text-align: center;
+    color: #008080;
+}
+.details-container {
+    width: 50%;
+    margin: 20px auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.details-container p {
+    margin-bottom: 10px;
+}
+.details-container strong {
+    color: #008080;
+}
+.not-found {
+    text-align: center;
+    color: #FF5733;
+    font-style: italic;
+    font-size: 18px;
+}
+</style>
+</head>
+<body>
+<h1>Order Details</h1>
+<div th:if="${order != null}" class="details-container">
+<p><strong>Order ID:</strong> <span th:text="${order.order_id}"></span></p>
+<p><strong>Date:</strong> <span th:text="${order.order_date}"></span></p>
+<p><strong>Customer ID:</strong> <span th:text="${order.customers != null ? order.customers.customer_id : 'N/A'}"></span></p>
+<p><strong>Restaurant ID:</strong> <span th:text="${order.restaurants != null ? order.restaurants.restaurant_id : 'N/A'}"></span></p>
+<p><strong>Driver ID:</strong> <span th:text="${order.deliveryDrivers != null ? order.deliveryDrivers.driver_id : 'N/A'}"></span></p>
+<p><strong>Order Status:</strong> <span th:text="${order.order_status}"></span></p>
+<!-- Add more details here as needed -->
+</div>
+<div th:if="${order == null}" class="not-found">
+<p>Order not found.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Update Customer</title>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #008080;
+        }
+        .details-container {
+            width: 50%;
+            margin: 20px auto;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .details-container p {
+            margin-bottom: 10px;
+        }
+        .details-container strong {
+            color: #008080;
+        }
+        .not-found {
+            text-align: center;
+            color: #FF5733;
+            font-style: italic;
+            font-size: 18px;
+        }
+</style>
+</head>
+<body>
+<h2>Update Customer</h2>
+<form action="#" th:action="@{/customers/update}" th:object="${customer}" method="post">
+<input type="hidden" th:field="*{customer_id}" /> <!-- Hidden field for customer ID -->
+<label for="name">Name:</label>
+<input type="text" id="name" th:field="*{customer_name}" required /><br>
+<label for="email">Email:</label>
+<input type="text" id="email" th:field="*{customer_email}" required /><br>
+<label for="phone">Phone:</label>
+<input type="text" id="phone" th:field="*{customer_phone}" required /><br>
+<button type="submit">Update</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food Delivery Service Login</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    background: url('https://th.bing.com/th/id/OIP.ETXzokBBeshDQUH56kgEdQHaFw?pid=ImgDet&w=208&h=161&c=7&dpr=1.5')no-repeat center center fixed;
+    background-size:cover;
+    background-blend-mode: overlay;
+    filter: brightness(150%);
+  }
+  .container {
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 100px;
+
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+  }
+  input[type="text"],
+  input[type="password"] {
+    width: 50%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  input[type="submit"] {
+    width: 30%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  .error {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2><center>Login to Food Delivery Service</center></h2>
+<form id="loginForm" action="/fooddeliveryapp/api/home" method="GET" onsubmit="validateForm()">
+ 
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password">
+    <div id="username-error" class="error"></div>
+    <div id="password-error" class="error"></div>
+
+    <input type="submit" value="Login">
+  </form>
+  <div id="error-msg" class="error"></div>
+</div>
+
+<script>
+function validateForm() {
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+  var usernameError = document.getElementById("username-error");
+  var passwordError = document.getElementById("password-error");
+  var errorMsg = document.getElementById("error-msg");
+
+  // Reset error messages
+  errorMsg.innerHTML = "";
+  usernameError.innerHTML = "";
+  passwordError.innerHTML = "";
+
+  if (username === "" || password === "") {
+    errorMsg.innerHTML = "Please fill in all fields.";
+    return false;
+  }
+
+  // Username validation (example: must be an email address)
+  if (!isValidEmail(username)) {
+    usernameError.innerHTML = "Please enter a valid email address.";
+    return false;
+  }
+
+  // Password validation (at least 8 characters)
+  if (password.length < 8) {
+    passwordError.innerHTML = "Password must be at least 8 characters.";
+    return false;
+  }
+
+  // You can add additional password validation here if needed
+
+  // If all validation passes, return true to submit the form
+  return true;
+}
+
+</script>
+
+</body>
+</html>

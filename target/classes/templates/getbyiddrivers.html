@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delivery Drivers Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #008080;
+        }
+        .details-container {
+            width: 50%;
+            margin: 20px auto;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .details-container p {
+            margin-bottom: 10px;
+        }
+        .details-container strong {
+            color: #008080;
+        }
+        .not-found {
+            text-align: center;
+            color: #FF5733;
+            font-style: italic;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Delivery Drivers Details</h1>
+    
+    <div class="details-container" th:if="${driver != null}">
+        <p><strong>Driver ID:</strong> <span th:text="${driver.driver_id}"></span></p>
+        <p><strong>Driver Name:</strong> <span th:text="${driver.driver_name}"></span></p>
+        <p><strong>Driver Phone:</strong> <span th:text="${driver.driver_phone}"></span></p>
+        <p><strong>Driver Vehicle:</strong> <span th:text="${driver.driver_vehicle}"></span></p>
+    </div>
+    
+    <div class="not-found" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+</body>
+</html>

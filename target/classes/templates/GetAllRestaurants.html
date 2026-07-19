@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurants</title>
+   <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #008080;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #008080;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-b5color: #ddd;
+        }
+</style>
+</head>
+<body>
+    <h1>Restaurants</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Restaurant ID</th>
+                <th>Restaurant Name</th>
+                <th>Restaurant Address</th>
+                <th>Restaurant Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="restaurant : ${restaurants}">
+                <td th:text="${restaurant.restaurant_id}"></td>
+                <td th:text="${restaurant.restaurant_name}"></td>
+                <td th:text="${restaurant.restaurant_address}"></td>
+                <td th:text="${restaurant.restaurant_phone}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
