@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Orders</title>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #008080;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #008080;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+</style>
+</head>
+<body>
+<h1>Orders</h1>
+<table>
+<thead>
+<tr>
+<th>Order ID</th>
+<th>Order Date</th>
+<th>Customer Name</th>
+<th>Restaurant Name</th>
+<th>Delivery Driver Name</th>
+<th>Order Status</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="order : ${orders}">
+<td th:text="${order.order_id}">Order ID</td>
+<td th:text="${#temporals.format(order.order_date, 'dd-MM-yyyy HH:mm')}">Order Date</td>
+<td th:text="${order.customers.customer_name}">Customer Name</td>
+<td th:text="${order.restaurants.restaurant_name}">Restaurant Name</td>
+<td th:text="${order.deliveryDrivers.driver_name}">Delivery Driver Name</td>
+<td th:text="${order.order_status}">Order Status</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

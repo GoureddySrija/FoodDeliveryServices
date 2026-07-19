@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Customers</title>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #008080;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #008080;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-b5color: #ddd;
+        }
+</style>
+</head>
+<body>
+<h1>Customers List</h1>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Phone</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="customer : ${customers}">
+<td th:text="${customer.customer_id}">Customer ID</td>
+<td th:text="${customer.customer_name}">Customer Name</td>
+<td th:text="${customer.customer_email}">Customer Email</td>
+<td th:text="${customer.customer_phone}">Customer Phone</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

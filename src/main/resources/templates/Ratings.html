@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retrieve Ratings by Restaurant ID</title>
+</head>
+<body>
+    <h1>Retrieve Ratings by Restaurant ID</h1>
+    <form id="ratingsForm">
+        <label for="restaurantId">Enter Restaurant ID:</label>
+        <input type="text" id="restaurantId" name="restaurantId" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="ratingsContainer"></div>
+
+    <script>
+        document.getElementById('ratingsForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const restaurantId = document.getElementById('restaurantId').value;
+
+            fetch(`/api/restaurants/${restaurantId}/ratings`)
+                .then(response => response.json())
+                .then(data => {
+                    const ratingsContainer = document.getElementById('ratingsContainer');
+                    ratingsContainer.innerHTML = ''; // Clear previous results
+
+                    const ratings = data.map(rating => `
+                        <div>
+                            <h2>Rating ID: ${rating.rating_id}</h2>
+                            <p>Rating: ${rating.rating}</p>
+                            <p>Review: ${rating.review}</p>
+                            <p>Order ID: ${rating.order.order_id}</p>
+                            <p>Order Date: ${rating.order.order_date}</p>
+                            <p>Customer Name: ${rating.order.customers.customer_name}</p>
+                            <p>Restaurant Name: ${rating.restaurants.restaurant_name}</p>
+                            <p>Delivery Driver: ${rating.order.deliveryDrivers.driver_name}</p>
+                        </div>
+                    `).join('');
+
+                    ratingsContainer.innerHTML = ratings;
+                })
+                .catch(error => {
+                    console.error('Error fetching ratings:', error);
+                    document.getElementById('ratingsContainer').innerHTML = '<p>Error retrieving ratings. Please try again later.</p>';
+                });
+        });
+    </script>
+</body>
+</html>

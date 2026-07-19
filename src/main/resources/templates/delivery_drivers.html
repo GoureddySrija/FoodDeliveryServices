@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delivery Drivers</title>
+<script>
+	function updateDeliveryDriversById() {
+        var driverId = prompt("Please enter the Delivery Drivers ID:");
+        if (driverId !== null && driverId.trim() !== "") {
+            window.location.href = `/fooddeliveryapp/api/drivers/update/${driverId}`;
+        }
+    }
+</script>
+<script>
+    function getDeliveryDriversById() {
+    // Get the customer ID from the input field
+    var driverId = prompt("please enter the Order Id");
+    // If user provides a customer ID
+    if (driverId!==null && driverId.trim() !== "") {
+        // Redirect to the URL with the provided customer ID
+        window.location.href = `/fooddeliveryapp/api/drivers/drivers/${driverId}`;
+    }
+    else {
+        alert("Please enter a valid Driver ID.");
+    }
+}
+</script>
+<style>
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			margin:   0;
+			padding:  0;
+			background: url('https://st2.depositphotos.com/1007566/7053/v/450/depositphotos_70537621-stock-illustration-food-delivery.jpg')no-repeat center center fixed;
+			background-size: auto;
+			background-blend-mode: overlay;
+		}
+		.header {
+			background: linear-gradient(to right,#bdc3c7,#2F4F4F);
+			color: white;
+			text-align: center;
+			padding: 20px 0;
+		}
+		.container {
+			max-width: 800px;
+			margin: 20px auto;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 20px;
+			padding: 20px;
+		}
+		.card {
+			background-color: rgba(255, 255, 255, 0.9);
+			border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+			overflow: hidden;
+			transition: transform 0.3s ease;
+		}
+		.card:hover {
+			transform: translateY(-5px);
+		}
+		.card-content {
+			padding: 20px;
+			text-align: center;
+		}
+		h2 {
+			color: #333;
+			font-size: 20px;
+			margin-bottom: 10px;
+		}
+		p {
+			color: #666;
+			font-size: 16px;
+			margin-bottom: 20px;
+		}
+		.btn {
+			padding: 10px 20px;
+			font-size: 16px;
+			cursor: pointer;
+			border: none;
+			border-radius: 5px;
+			background: linear-gradient(to right,#bdc3c7,#2F4F4F);
+			color: white;
+			text-transform: uppercase;
+			transition: background-color 0.3s ease;
+		}
+		.btn:hover {
+			background: linear-gradient(to right, #9a9a9a, #4fa3f0);
+		}
+		a {
+			text-decoration: none;
+			color: white;
+		}
+		h1 {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>View Delivery Drivers</h1>
+</div>
+<div class="container">
+<div class="card">
+<div class="card-content">
+<h2>All Delivery Drivers</h2>
+<button class="btn"> <a href="/fooddeliveryapp/api/drivers/drivers">GET</a></button>
+<p>Retrieve all delivery drivers details from the suppliers table.</p>
+</div>
+</div>
+<div class="card">
+<div class="card-content">
+<h2>Get Delivery Drivers By Id</h2>
+<button class="btn" onclick="getDeliveryDriversById()">GET</button>
+<p>Get Delivery Driver object in DB</p>
+</div>
+</div>
+<div class="card">
+<div class="card-content">
+<h2>Update Delivery Drivers By ID</h2>
+<button class="btn" onclick="updateDeliveryDriversById()">PUT</button>
+<p>Update DeliveryDrivers details by ID.</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Delivery Driver</title>
+</head>
+<body>
+    <h1>Update Delivery Driver</h1>
+    <form th:action="@{'/api/drivers/update/' + ${driver.driver_id}}" th:object="${driver}" method="post">
+        <input type="hidden" th:field="*{driver_id}" />
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{driver_name}" required /><br>
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" th:field="*{driver_phone}" required /><br>
+        <label for="vehicle">Vehicle:</label>
+        <input type="text" id="vehicle" th:field="*{driver_vehicle}" required /><br>
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

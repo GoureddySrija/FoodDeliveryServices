@@ -1,0 +1,44 @@
+ <!DOCTYPE html>
+<html>
+ 
+<head>
+<meta charset="UTF-8">
+<title>Add Restaurant</title>
+</head>
+<body>
+	<div th:Object="${AddRestaurant}">
+		<center>
+			<h1>Restaurant Details</h1>
+		</center>
+		<table>
+			<tbody>
+				<tr>
+					<td><strong>Restaurant Id:</strong></td>
+					<td>
+						<p th:text="*{restaurant_id}" />
+					</td>
+				</tr>
+				<tr><td><strong>Restaurant Name:</strong></td>
+					<td>
+						<p th:text="*{restaurant_name}" />
+					</td>
+				</tr>
+				<tr>
+					<td><strong>Restaurant Address:</strong></td>
+					<td>
+						<p th:text="*{restaurant_address}" />
+					</td>
+				</tr>
+				<tr>
+					<td><strong>Restaurant Phone:</strong></td>
+					<td>
+						<p th:text="*{restaurant_phone}" />
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<h1><p>Successfully details Added</p></h1>
+	</div>
+</body>
+ 
+</html>

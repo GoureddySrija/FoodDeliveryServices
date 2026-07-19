@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Update Order Status</title>
+
+    <style>
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    background-color: #f4f4f4;
+
+    color: #333;
+
+}
+
+h1 {
+
+    text-align: center;
+
+    color: #008080;
+
+}
+
+.details-container {
+
+    width: 50%;
+
+    margin: 20px auto;
+
+    background-color: #fff;
+
+    border: 1px solid #ddd;
+
+    padding: 20px;
+
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+}
+
+.details-container p {
+
+    margin-bottom: 10px;
+
+}
+
+.details-container strong {
+
+    color: #008080;
+
+}
+
+.not-found {
+
+    text-align: center;
+
+    color: #FF5733;
+
+    font-style: italic;
+
+    font-size: 18px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<center>
+
+    <h2>Update Order Status</h2>
+
+    <form action="#" th:action="@{/orders/update}" th:object="${order}" method="post">
+
+        <input type="hidden" th:field="*{order_id}" /> <!-- Hidden field for order ID -->
+
+        <label for="newStatus">New Order Status:</label>
+
+        <input type="text" id="newStatus" th:field="*{order_status}" required />
+
+        <button type="submit">Update</button>
+
+    </form>
+
+</center>
+
+</body>
+
+</html>
